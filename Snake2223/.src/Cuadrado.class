@@ -1,0 +1,89 @@
+' Gambas class file
+
+'####################################################
+
+'ESTADO - ATRIBUTOS
+
+'####################################################
+
+'un color para pintarse
+'lado en pixeles
+'necesitamos poner el cuadrado en un determinado pixel: x,y
+Private colorCuadrado As Integer
+Private lado As Short
+Private posX As Short
+Private posY As Short
+
+
+
+
+'####################################################
+
+'COMPORTAMIENTO - MÉTODOS
+
+'####################################################
+
+'Constructor
+'primero ponemos public, después sub, _new para los constructores
+'después entre paréntesis tantos tripletes de parámetros como atributos (norma general)
+
+Public Sub _new(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
+
+
+      'asignamos los valores
+      
+      colorCuadrado = nuevoColor
+      lado = nuevoLado
+      posX = nuevaX
+      posY = nuevaY
+      
+End
+
+'Moverse
+Public Sub moverse(letra As String)
+  
+  If letra = "W" Then 
+    'queremos ir parriba
+    posY = lado + posY
+    
+  Endif
+  
+  
+  If letra = "S" Then 
+    'queremos ir pabajo
+    posY = posY - lado
+    
+  Endif
+  
+  If letra = "A" Then 
+    'queremos ir izquierda
+    posX = posX - lado
+  Endif
+  
+  '¿Qué valores tengo?
+  'posY -> -10
+  
+  If letra = "D" Then 
+    'queremos ir derecha
+    posX = lado + posX
+  Endif
+  
+  
+End
+
+
+
+'pintarse
+Public Sub pintarse(tablero As DrawingArea)
+  
+    Paint.Begin(tablero)
+    Paint.Brush = Paint.Color(colorCuadrado)
+    Paint.Rectangle(posX, posY, lado, lado) 
+    Paint.Fill 
+    Paint.End
+  
+End
+
+
+'getters
+

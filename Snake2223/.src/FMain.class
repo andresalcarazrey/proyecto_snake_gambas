@@ -1,0 +1,28 @@
+' Gambas class file
+
+Private miCuadrado As Cuadrado
+
+
+Public Sub Jugar_Click()
+
+  
+  miCuadrado = New Cuadrado(Color.Yellow, 30, 200, 200)
+  Crono.Start()
+  'Es lo mismo mismo mismo que: Crono.Enabled = True
+
+End
+
+Public Sub Crono_Timer()
+
+  
+  DrawingArea1.Refresh()
+
+End
+
+Public Sub DrawingArea1_Draw()
+
+  If (miCuadrado <> Null) Then 
+     miCuadrado.pintarse(DrawingArea1)
+  Endif
+
+End
