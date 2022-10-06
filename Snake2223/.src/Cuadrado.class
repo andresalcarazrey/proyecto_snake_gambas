@@ -44,28 +44,18 @@ Public Sub moverse(letra As String)
   
   If letra = "W" Then 
     'queremos ir parriba
-    posY = lado + posY
-    
-  Endif
-  
-  
-  If letra = "S" Then 
-    'queremos ir pabajo
     posY = posY - lado
-    
-  Endif
+  Else If letra = "S" Then 
+    'queremos ir pabajo
+    posY = posY + lado
   
-  If letra = "A" Then 
+  Else If letra = "A" Then 
     'queremos ir izquierda
     posX = posX - lado
-  Endif
-  
-  '¿Qué valores tengo?
-  'posY -> -10
-  
-  If letra = "D" Then 
+
+  Else If letra = "D" Then 
     'queremos ir derecha
-    posX = lado + posX
+    posX = lado + posX  
   Endif
   
   
@@ -86,4 +76,23 @@ End
 
 
 'getters
+Public Function getColor() As Integer
+  
+   Return colorCuadrado
+  
+End
+
+
+Public Function getPosX() As Short
+  
+   Return posX
+  
+End
+
+Public Function getPosY() As Short
+  
+   Return posY
+  
+End
+
 

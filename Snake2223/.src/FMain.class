@@ -1,19 +1,31 @@
 ' Gambas class file
 
-Private miCuadrado As Cuadrado
+Private viborita As Serpiente
+
+Private iPasos As Integer
 
 
 Public Sub Jugar_Click()
 
   
-  miCuadrado = New Cuadrado(Color.Yellow, 30, 200, 200)
+  viborita = New Serpiente(200, 300, 234543, "W")
+  iPasos = 1
   Crono.Start()
   'Es lo mismo mismo mismo que: Crono.Enabled = True
 
 End
 
 Public Sub Crono_Timer()
-
+  iPasos = iPasos + 1 
+  
+  If iPasos = 3 Then
+     viborita.crecer()
+     iPasos = 1
+  Else
+     viborita.moverse()
+  Endif
+  
+  
   
   DrawingArea1.Refresh()
 
@@ -21,8 +33,8 @@ End
 
 Public Sub DrawingArea1_Draw()
 
-  If (miCuadrado <> Null) Then 
-     miCuadrado.pintarse(DrawingArea1)
+  If (viborita <> Null) Then 
+     viborita.pintarse(DrawingArea1)
   Endif
 
 End
