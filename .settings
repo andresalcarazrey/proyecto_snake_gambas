@@ -2,18 +2,28 @@
 Count=0
 
 [DebugWindow]
-Count=1
-DebugWindow[1]="DrawingArea1"
+Count=0
+
+[DebugWindow/Cuadrado]
+Geometry=[800,320,320,400]
 
 [DebugWindow/DrawingArea1]
 Geometry=[800,340,320,400]
 
+[DebugWindow/cabeza]
+ShowHidden=True
+Geometry=[800,320,320,400]
+
+[DebugWindow/miCuerpo]
+Geometry=[557,221,491,503]
+
 [OpenFile]
 File[1]=".src/FMain.form"
 Active=3
-File[2]=".src/FMain.class:3.19"
-Count=3
-File[3]=".src/Cuadrado.class:15.51"
+File[2]=".src/FMain.class:7.34"
+Count=4
+File[3]=".src/Cuadrado.class:24.72"
+File[4]=".src/Serpiente.class:9.122"
 
 [Watches]
 Count=0

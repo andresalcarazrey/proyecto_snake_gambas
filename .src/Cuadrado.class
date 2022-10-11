@@ -1,0 +1,117 @@
+' Gambas class file
+
+'####################################################
+
+'ESTADO - ATRIBUTOS
+
+'####################################################
+
+'un color para pintarse
+'lado en pixeles
+'necesitamos poner el cuadrado en un determinado pixel: x,y
+Private colorCuadrado As Integer
+Private lado As Short
+Private posX As Short
+Private posY As Short
+
+
+
+
+'####################################################
+
+'COMPORTAMIENTO - MÉTODOS
+
+'####################################################
+
+'Constructor
+'primero ponemos public, después sub, _new para los constructores
+'después entre paréntesis tantos tripletes de parámetros como atributos (norma general)
+
+Public Sub _new(nuevoColor As Integer, nuevoLado As Short, nuevaX As Short, nuevaY As Short)
+
+
+      'asignamos los valores
+      
+      colorCuadrado = nuevoColor
+      lado = nuevoLado
+      posX = nuevaX
+      posY = nuevaY
+      
+End
+
+'Moverse
+Public Sub moverse(letra As String)
+  
+  If letra = "W" Then 
+    'queremos ir parriba
+    posY = posY - lado
+  Else If letra = "S" Then 
+    'queremos ir pabajo
+    posY = posY + lado
+  
+  Else If letra = "A" Then 
+    'queremos ir izquierda
+    posX = posX - lado
+
+  Else If letra = "D" Then 
+    'queremos ir derecha
+    posX = lado + posX  
+  Endif
+  
+  
+End
+
+
+
+'pintarse
+Public Sub pintarse(tablero As DrawingArea)
+  
+    Dim colorLoteria As Integer
+    
+    colorLoteria = Color.RGB(Rand(200, 255), Rand(0, 50), Rand(0, 255))
+  
+    Paint.Begin(tablero)
+    Paint.Brush = Paint.Color(colorLoteria)
+    Paint.Rectangle(posX, posY, lado, lado) 
+    Paint.Fill 
+    Paint.End
+  
+End
+
+
+'getters
+Public Function getColor() As Integer
+  
+   Return colorCuadrado
+  
+End
+
+
+Public Function getPosX() As Short
+  
+   Return posX
+  
+End
+
+Public Function getPosY() As Short
+  
+   Return posY
+  
+End
+
+
+Public Function colisiona(otroCuadrado As Cuadrado) As Boolean
+  
+  Dim bResultado As Boolean
+  
+  If (posX = otroCuadrado.getPosX() And posY = otroCuadrado.getPosY()) Then
+     bResultado = True
+  Else 
+    bResultado = False
+  Endif
+  
+  Return bResultado
+  
+End
+
+
